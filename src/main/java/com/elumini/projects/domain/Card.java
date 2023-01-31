@@ -5,10 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 @Data
@@ -16,6 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table
+@DynamicUpdate
 public class Card {
     @JsonIgnore
     @Id
@@ -31,5 +36,5 @@ public class Card {
 
     @Column(name = "saldo")
     @JsonProperty("saldo")
-    private Long balance;
+    private BigDecimal balance;
 }

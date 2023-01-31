@@ -5,6 +5,8 @@ import com.elumini.projects.repository.CardJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 @Service
@@ -17,7 +19,7 @@ public class CardService {
             return null;
         } else {
             card.setId(UUID.randomUUID());
-            card.setBalance(500L);
+            card.setBalance(BigDecimal.valueOf(500.00));
 
             cardRepository.save(card);
             return card;
@@ -27,7 +29,7 @@ public class CardService {
     public Double getBalance(String cardNumber){
         Card card = cardRepository.findCardByCardNumber(cardNumber);
         if (card != null){
-            return Double.valueOf(card.getBalance());
+            return card.getBalance().doubleValue();
         }else{
             return null;
         }
