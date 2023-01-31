@@ -2,6 +2,7 @@ package com.elumini.projects.service;
 
 import com.elumini.projects.domain.Card;
 import com.elumini.projects.domain.Transaction;
+import com.elumini.projects.enums.TransactionErrors;
 import com.elumini.projects.error.TransactionException;
 import com.elumini.projects.repository.CardJPA;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class TransactionService {
         System.out.println(transaction.getPassword());
 
         if (card == null) {
-            throw new TransactionException("CARTAO_INEXISTENTE");
+            throw new TransactionException(TransactionErrors.CARTAO_INEXISTENTE.toString());
         }else if (!card.getPassword().equals(transaction.getPassword())) {
-            throw new TransactionException("SENHA_INVALIDA");
+            throw new TransactionException(TransactionErrors.SENHA_INVALIDA.toString());
         }else if (transaction.getValue() > card.getBalance().doubleValue()) {
-            throw new TransactionException("SALDO_INSUFICIENTE");
+            throw new TransactionException(TransactionErrors.SALDO_INSUFICIENTE.toString());
         } else {
             Double newBalance = card.getBalance().doubleValue() - transaction.getValue();
 
