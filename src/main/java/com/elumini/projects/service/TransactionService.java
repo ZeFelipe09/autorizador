@@ -5,6 +5,7 @@ import com.elumini.projects.domain.Transaction;
 import com.elumini.projects.enums.TransactionErrors;
 import com.elumini.projects.error.TransactionException;
 import com.elumini.projects.repository.CardJPA;
+import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class TransactionService {
     @Autowired
     private CardJPA cardRepository;
 
+    @Synchronized
     public Double createTransaction(Transaction transaction) throws TransactionException {
         Card card = cardRepository.findCardByCardNumber(transaction.getCardNumber());
 
