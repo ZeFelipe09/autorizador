@@ -21,6 +21,16 @@ public class CardResource {
         }else{
             return ResponseEntity.ok(cardCreated);
         }
+    }
+
+    @GetMapping("/{numeroCartao}")
+    public ResponseEntity<Double> getBalance(@PathVariable String numeroCartao){
+        Double balance = cardService.getBalance(numeroCartao);
+        if (balance == null){
+            return ResponseEntity.status(404).build();
+        }else{
+            return ResponseEntity.ok(balance);
+        }
 
     }
 }

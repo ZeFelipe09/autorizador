@@ -23,4 +23,13 @@ public class CardService {
             return card;
         }
     }
+
+    public Double getBalance(String cardNumber){
+        Card card = cardRepository.findCardByCardNumber(cardNumber);
+        if (card != null){
+            return Double.valueOf(card.getBalance());
+        }else{
+            return null;
+        }
+    }
 }
