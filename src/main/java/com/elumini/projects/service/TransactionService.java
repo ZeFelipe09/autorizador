@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-
 @Service
 public class TransactionService {
 
@@ -20,9 +19,6 @@ public class TransactionService {
     @Synchronized
     public Double createTransaction(Transaction transaction) throws TransactionException {
         Card card = cardRepository.findCardByCardNumber(transaction.getCardNumber());
-
-        System.out.println(card.getPassword());
-        System.out.println(transaction.getPassword());
 
         if (card == null) {
             throw new TransactionException(TransactionErrors.CARTAO_INEXISTENTE.toString());

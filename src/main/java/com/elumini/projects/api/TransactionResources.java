@@ -4,7 +4,6 @@ import com.elumini.projects.domain.Transaction;
 import com.elumini.projects.error.TransactionException;
 import com.elumini.projects.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
