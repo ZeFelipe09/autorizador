@@ -18,9 +18,7 @@ public class CardService {
         if (cardRepository.findCardByCardNumber(card.getCardNumber()) != null) {
             return null;
         } else {
-            card.setId(UUID.randomUUID());
             card.setBalance(BigDecimal.valueOf(500.00));
-
             cardRepository.save(card);
             return card;
         }

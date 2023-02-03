@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Configuration
@@ -18,8 +19,9 @@ public class LocalConfig {
 
     @Bean
     public void startDB(){
-        Card c1 = new Card(UUID.randomUUID(), "01234567890123", "1234", BigDecimal.valueOf(500.0));
-        Card c2 = new Card(UUID.randomUUID(), "5248898969353237", "1234", BigDecimal.valueOf(500.0));
+        Random rn = new Random();
+        Card c1 = new Card(rn.nextInt(), "01234567890123", "1234", BigDecimal.valueOf(500.0));
+        Card c2 = new Card(rn.nextInt(), "5248898969353237", "1234", BigDecimal.valueOf(500.0));
 
         cardRepository.saveAll(List.of(c1, c2));
     }

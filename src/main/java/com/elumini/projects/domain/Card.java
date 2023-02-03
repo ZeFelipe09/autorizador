@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.UUID;
@@ -24,7 +21,8 @@ import java.util.UUID;
 public class Card {
     @JsonIgnore
     @Id
-    private UUID id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "numeroCartao")
     @JsonProperty("numeroCartao")
